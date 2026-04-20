@@ -930,10 +930,10 @@ export class SandboxSdkClient extends BaseSandboxService {
 
             // If on local development, start cloudflared tunnel
             let tunnelUrlPromise = Promise.resolve('');
-            if (isDev(env) || env.USE_TUNNEL_FOR_PREVIEW) {
-                this.logger.info('Starting cloudflared tunnel for local development', { instanceId });
-                tunnelUrlPromise = this.startCloudflaredTunnel(instanceId, allocatedPort);
-            }
+            // if (isDev(env) || env.USE_TUNNEL_FOR_PREVIEW) {
+            //     this.logger.info('Starting cloudflared tunnel for local development', { instanceId });
+            //     tunnelUrlPromise = this.startCloudflaredTunnel(instanceId, allocatedPort);
+            // }
 
             this.logger.info('Installing dependencies', { instanceId });
             const [installResult, tunnelURL] = await Promise.all([
@@ -963,10 +963,10 @@ export class SandboxSdkClient extends BaseSandboxService {
                         }
                     }
 
-                    if(env.USE_TUNNEL_FOR_PREVIEW) {
-                        this.logger.info('Using tunnel url instead for preview as configured', { instanceId, tunnelURL });
-                        previewURL = tunnelURL;
-                    }
+                    // if(env.USE_TUNNEL_FOR_PREVIEW) {
+                    //     this.logger.info('Using tunnel url instead for preview as configured', { instanceId, tunnelURL });
+                    //     previewURL = tunnelURL;
+                    // }
                         
                     this.logger.info('Preview URL exposed', { instanceId, previewURL });
                         

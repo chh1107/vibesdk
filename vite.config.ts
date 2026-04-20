@@ -64,6 +64,7 @@ export default defineConfig({
 
 	server: {
 		allowedHosts: true,
+		host: true,
 	},
 
 	// Clear cache more aggressively

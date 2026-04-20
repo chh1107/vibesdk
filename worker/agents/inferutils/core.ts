@@ -196,9 +196,8 @@ export async function buildGatewayUrl(env: Env, providerOverride?: AIGatewayProv
             const url = new URL(env.CLOUDFLARE_AI_GATEWAY_URL);
             // Validate it's actually an HTTP/HTTPS URL
             if (url.protocol === 'http:' || url.protocol === 'https:') {
-                // Add 'providerOverride' as a segment to the URL
-                const cleanPathname = url.pathname.replace(/\/$/, ''); // Remove trailing slash
-                url.pathname = providerOverride ? `${cleanPathname}/${providerOverride}` : `${cleanPathname}/compat`;
+                // Chh: Fix provider url
+                url.pathname = url.pathname.replace(/\/$/, ''); // Remove trailing slash
                 return url.toString();
             }
         } catch (error) {
